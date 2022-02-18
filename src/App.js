@@ -1,17 +1,17 @@
-import Globe from "./Globe";
+import World from "./World";
 import SideBar from "./SideBar";
 import Footer from "./Footer";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [data, setData] = useState({});
+  const [labels, setlabels] = useState([]);
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get("/api/data");
-      setData(response.data);
+    async function fetchlabels() {
+      const response = await axios.get("/api/labels");
+      setlabels(response.data);
     }
-    fetchData();
+    fetchlabels();
   }, []);
   return (
     <div className="flex flex-col leading-normal tracking-normal bg-black text-white">
@@ -20,7 +20,7 @@ function App() {
           <SideBar />
         </div>
         <div className="w-2/3">
-          <Globe countries={data.countries}></Globe>
+          <World labels={labels}></World>
         </div>
       </div>
       <div className="">
