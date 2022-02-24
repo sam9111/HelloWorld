@@ -16,6 +16,7 @@ export default function SideBar(props) {
           return p.country.toLowerCase().includes(query.toLowerCase());
         });
 
+  console.log(selectedPoint);
   return (
     <div className="flex flex-col justify-center space-y-10 p-10 mx-auto">
       <h1 className="text-6xl font-bold p-5 text-center">Hello World</h1>
@@ -36,7 +37,9 @@ export default function SideBar(props) {
             </Combobox.Button>
             <button
               className="p-2 bg-blue-400 self-center rounded-lg"
-              onClick={() => setCoordinates(selectedPoint.coordinates)}
+              onClick={() => {
+                setCoordinates(selectedPoint.coordinates);
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

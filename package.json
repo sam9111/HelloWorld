@@ -17,6 +17,7 @@
     "react-loading": "^2.0.3",
     "react-scripts": "5.0.0",
     "three": "^0.118.3",
+    "tippy.js": "^6.3.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
