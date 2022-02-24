@@ -5,14 +5,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [labels, setlabels] = useState([]);
-  useEffect(() => {
-    async function fetchlabels() {
-      const response = await axios.get("/api/labels");
-      setlabels(response.data);
-    }
-    fetchlabels();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchlabels() {
+  //     const response = await axios.get("/api/labels");
+  //     setlabels(response.data);
+  //   }
+  //   fetchlabels();
+  // }, []);
   return (
     <div className="flex flex-col leading-normal tracking-normal bg-black text-white">
       <div className="flex flex-row min-h-screen">
@@ -20,7 +19,7 @@ function App() {
           <SideBar />
         </div>
         <div className="w-2/3">
-          <World labels={labels}></World>
+          <World />
         </div>
       </div>
       <div className="">
