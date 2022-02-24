@@ -3,20 +3,33 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactGlobe from "react-globe";
 export default function World() {
-  const [points, setPoints] = useState([]);
+  const [markers, setmarkers] = useState([]);
+  const [focus, setFocus] = useState(null);
   useEffect(() => {
-    async function fetchPoints() {
+    async function fetchmarkers() {
       const response = await axios.get("/api/points");
 
-      setPoints(response.data);
+      setmarkers(response.data);
     }
-    fetchPoints();
+    fetchmarkers();
   }, []);
+
+  const options = {};
+
   return (
-    <div className="flex flex-row ">
-      <SideBar />
-      <div className="w-2/3">
-        <ReactGlobe height="100vh" />
+    <div className="flex flex-col md:flex-row ">
+      <SideBar
+        points={markers}
+        setCoordinates={(coordinates) => setFocus(coordinates)}
+      />
+      <div className="md:w-2/3 w-full">
+        <ReactGlobe
+          markers={markers}
+          options={options}
+          height="100vh"
+          width="100%"
+          focus={focus}
+        />
       </div>
     </div>
   );
