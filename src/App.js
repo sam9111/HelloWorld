@@ -1,8 +1,8 @@
 import World from "./components/World";
-import SideBar from "./components/SideBar";
+
 import Footer from "./components/Footer";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 
 function App() {
   return (
