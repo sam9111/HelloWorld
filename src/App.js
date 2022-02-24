@@ -1,30 +1,14 @@
-import World from "./World";
-import SideBar from "./SideBar";
-import Footer from "./Footer";
+import World from "./components/World";
+import SideBar from "./components/SideBar";
+import Footer from "./components/Footer";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  // useEffect(() => {
-  //   async function fetchlabels() {
-  //     const response = await axios.get("/api/labels");
-  //     setlabels(response.data);
-  //   }
-  //   fetchlabels();
-  // }, []);
   return (
     <div className="flex flex-col leading-normal tracking-normal bg-black text-white">
-      <div className="flex flex-row min-h-screen">
-        <div className="w-1/3 ">
-          <SideBar />
-        </div>
-        <div className="w-2/3">
-          <World />
-        </div>
-      </div>
-      <div className="">
-        <Footer />
-      </div>
+      <World />
+      <Footer />
     </div>
   );
 }
