@@ -1,6 +1,5 @@
 import World from "./components/World";
 import Footer from "./components/Footer";
-
 import React from "react";
 
 function App() {

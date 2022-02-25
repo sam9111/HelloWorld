@@ -12,7 +12,8 @@ export default function World() {
   const [focus, setFocus] = useState(null);
   const [country, setCountry] = useState(null);
   const [countryObj, setCountryObj] = useState(null);
-  let [isOpen, setIsOpen] = useState(false);
+  const [animationSequence, setAnimationSequence] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -58,6 +59,9 @@ export default function World() {
         points={markers}
         setCoordinates={(coordinates) => setFocus(coordinates)}
         lastFetched={data.last_fetched}
+        setAnimationSequence={(animationSequence) =>
+          setAnimationSequence(animationSequence)
+        }
       />
       <div className="w-full">
         <ReactGlobe
@@ -66,6 +70,7 @@ export default function World() {
           height="100vh"
           width="100%"
           focus={focus}
+          animations={animationSequence}
           onClickMarker={(marker, markerObject, event) => {
             setCountry(marker.country);
             setCountryObj(data.countries[marker.id]);

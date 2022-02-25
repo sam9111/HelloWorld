@@ -1,10 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { SelectorIcon } from "@heroicons/react/solid";
 
 export default function SideBar(props) {
-  const { points, lastFetched, setCoordinates } = props;
+  const { points, lastFetched, setCoordinates, setAnimationSequence } = props;
 
   const [selectedPoint, setselectedPoint] = useState(points[0]);
   const [query, setQuery] = useState("");
@@ -15,6 +14,46 @@ export default function SideBar(props) {
       : points.filter((p) => {
           return p.country.toLowerCase().includes(query.toLowerCase());
         });
+
+  const animations = [
+    {
+      coordinates: [1.3521, 103.8198],
+      focusAnimationDuration: 3000,
+      focusDistanceRadiusScale: 2,
+      focusEasingFunction: ["Linear", "None"],
+    },
+    {
+      coordinates: [39.9042, 116.4074],
+      focusAnimationDuration: 3000,
+      focusDistanceRadiusScale: 2,
+      focusEasingFunction: ["Cubic", "InOut"],
+    },
+    {
+      coordinates: [37.773972, -122.431297],
+      focusAnimationDuration: 3000,
+      focusDistanceRadiusScale: 2,
+      focusEasingFunction: ["Back", "InOut"],
+    },
+    {
+      coordinates: [40.73061, -73.935242],
+      focusAnimationDuration: 3000,
+      focusDistanceRadiusScale: 2,
+      focusEasingFunction: ["Circular", "InOut"],
+    },
+    {
+      coordinates: [51.5074, 0.1278],
+      focusAnimationDuration: 3000,
+      focusDistanceRadiusScale: 2,
+      focusEasingFunction: ["Quadratic", "InOut"],
+    },
+    {
+      coordinates: [1.3521, 103.8198],
+      focusAnimationDuration: 5000,
+      focusDistanceRadiusScale: 4,
+      focusEasingFunction: ["Linear", "None"],
+    },
+  ];
+
   return (
     <div className="flex flex-col justify-center space-y-5 p-10 mx-auto  ">
       <h1 className="text-6xl md:text-8xl font-bold p-2 text-wrap ">
@@ -61,7 +100,13 @@ export default function SideBar(props) {
               className="p-2 m-2 bg-blue-400 self-center rounded-lg shadow shadow-white"
               onClick={() => setCoordinates(null)}
             >
-              Defocus
+              Zoom out
+            </button>
+            <button
+              className="p-2 m-2 bg-blue-400 self-center rounded-lg shadow shadow-white"
+              onClick={() => setAnimationSequence(animations)}
+            >
+              Travel the world
             </button>
           </div>
           <Transition
