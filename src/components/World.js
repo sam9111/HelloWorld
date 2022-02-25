@@ -7,6 +7,7 @@ import "tippy.js/dist/tippy.css";
 
 export default function World() {
   const [markers, setmarkers] = useState([]);
+  const [data, setdata] = useState([]);
   const [focus, setFocus] = useState(null);
   useEffect(() => {
     async function fetchmarkers() {
@@ -14,7 +15,14 @@ export default function World() {
 
       setmarkers(response.data);
     }
+    async function fetchData() {
+      const response = await axios.get("/api/data");
+
+      setdata(response.data);
+    }
+
     fetchmarkers();
+    fetchData();
   }, []);
 
   const options = {
@@ -31,6 +39,7 @@ export default function World() {
       <SideBar
         points={markers}
         setCoordinates={(coordinates) => setFocus(coordinates)}
+        lastFetched={data.last_fetched}
       />
       <div className="md:w-2/3 w-full">
         <ReactGlobe

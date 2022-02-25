@@ -4,8 +4,8 @@ import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
 export default function SideBar(props) {
-  const { points, setCoordinates } = props;
-  const [lastFetched, setLastFetched] = useState();
+  const { points, lastFetched, setCoordinates } = props;
+
   const [selectedPoint, setselectedPoint] = useState(points[0]);
   const [query, setQuery] = useState("");
 
@@ -15,16 +15,20 @@ export default function SideBar(props) {
       : points.filter((p) => {
           return p.country.toLowerCase().includes(query.toLowerCase());
         });
-
-  console.log(selectedPoint);
   return (
-    <div className="flex flex-col justify-center space-y-10 p-10 mx-auto">
-      <h1 className="text-6xl font-bold p-5 text-center">Hello World</h1>
-      <div className="flex-1 mx-auto">
+    <div className="flex flex-col justify-center space-y-5 p-10 mx-auto">
+      <h1 className="text-6xl md:text-8xl font-bold p-2  ">Hello World</h1>
+
+      <h3 className=" p-2 ">
+        News from all over the world was last updated at
+        <br />
+        {lastFetched}
+      </h3>
+      <div className="flex-1">
         <Combobox value={selectedPoint} onChange={setselectedPoint}>
           <div className="flex flex-row">
             <Combobox.Input
-              className="w-full border-none focus:ring p-2 m-2 text-lg  bg-white rounded-lg shadow shadow-white text-gray-900"
+              className="w-full border-none focus:ring p-2 m-2 text-md  bg-white rounded-lg shadow shadow-white text-gray-900"
               onChange={(event) => setQuery(event.target.value)}
               displayValue={(point) => point.country}
               placeholder="Go to..."
@@ -64,7 +68,7 @@ export default function SideBar(props) {
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className=" w-full p-2 m-2  text-lg bg-white rounded-lg shadow shadow-white ">
+            <Combobox.Options className=" m-2 p-2  overflow-auto max-h-40 text-md bg-white rounded-lg shadow shadow-white ">
               {filteredPoints.length === 0 && query !== "" ? (
                 <div className=" text-gray-900 p-2">No results</div>
               ) : (
@@ -81,21 +85,14 @@ export default function SideBar(props) {
                     {({ selected, active }) => (
                       <>
                         <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
+                          className={` ${
+                            selected
+                              ? "font-bold text-blue-400 "
+                              : "font-normal"
                           }`}
                         >
                           {point.country}
                         </span>
-                        {selected ? (
-                          <span
-                            className={`flex items-center ${
-                              active
-                                ? "text-black bg-blue-200"
-                                : "text-teal-600"
-                            }`}
-                          ></span>
-                        ) : null}
                       </>
                     )}
                   </Combobox.Option>
