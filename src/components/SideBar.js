@@ -156,11 +156,10 @@ export default function SideBar(props) {
           Click on any marker to see the list of articles for that country that
           have been analysed.
         </p>
-        <p>
-          Data was last updated at
-          <br />
-          {lastFetched}
-        </p>
+        <p>Data was last updated at {lastFetched}</p>
+        <a href="https://github.com/sam9111/HelloWorld" className="underline">
+          Made with 🤍
+        </a>
       </div>
     </div>
   );
