@@ -16,13 +16,15 @@ export default function SideBar(props) {
           return p.country.toLowerCase().includes(query.toLowerCase());
         });
   return (
-    <div className="flex flex-col justify-center space-y-5 p-10 mx-auto">
-      <h1 className="text-6xl md:text-8xl font-bold p-2  ">Hello World 🗞️</h1>
+    <div className="flex flex-col justify-center space-y-5 p-10 mx-auto  ">
+      <h1 className="text-6xl md:text-8xl font-bold p-2 text-wrap ">
+        Hello World 🗞️
+      </h1>
 
-      <div className="flex-1">
+      <div className="flex-1 ">
         <Combobox value={selectedPoint} onChange={setselectedPoint}>
           <Combobox.Label className="p-2">Travel directly to...</Combobox.Label>
-          <div className="flex flex-row">
+          <div className="flex flex-row flex-wrap">
             <Combobox.Input
               className=" border-none focus:ring p-2 m-2 text-md  bg-white rounded-lg shadow shadow-white text-gray-900"
               onChange={(event) => setQuery(event.target.value)}
@@ -59,7 +61,7 @@ export default function SideBar(props) {
               className="p-2 m-2 bg-blue-400 self-center rounded-lg"
               onClick={() => setCoordinates(null)}
             >
-              Zoom out
+              Defocus
             </button>
           </div>
           <Transition
