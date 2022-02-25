@@ -31,6 +31,7 @@ export default function World() {
     markerEnterEasingFunction: ["Bounce", "InOut"],
     markerExitAnimationDuration: 1000,
     markerExitEasingFunction: ["Cubic", "Out"],
+    enableDefocus: true,
     markerTooltipRenderer: (marker) => `${marker.country}`,
   };
 
@@ -41,7 +42,7 @@ export default function World() {
         setCoordinates={(coordinates) => setFocus(coordinates)}
         lastFetched={data.last_fetched}
       />
-      <div className="md:w-2/3 w-full">
+      <div className="md:w-3/4 w-full">
         <ReactGlobe
           markers={markers}
           options={options}

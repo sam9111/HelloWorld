@@ -17,23 +17,18 @@ export default function SideBar(props) {
         });
   return (
     <div className="flex flex-col justify-center space-y-5 p-10 mx-auto">
-      <h1 className="text-6xl md:text-8xl font-bold p-2  ">Hello World</h1>
+      <h1 className="text-6xl md:text-8xl font-bold p-2  ">Hello World 🗞️</h1>
 
-      <h3 className=" p-2 ">
-        News from all over the world was last updated at
-        <br />
-        {lastFetched}
-      </h3>
       <div className="flex-1">
         <Combobox value={selectedPoint} onChange={setselectedPoint}>
+          <Combobox.Label className="p-2">Travel directly to...</Combobox.Label>
           <div className="flex flex-row">
             <Combobox.Input
-              className="w-full border-none focus:ring p-2 m-2 text-md  bg-white rounded-lg shadow shadow-white text-gray-900"
+              className=" border-none focus:ring p-2 m-2 text-md  bg-white rounded-lg shadow shadow-white text-gray-900"
               onChange={(event) => setQuery(event.target.value)}
               displayValue={(point) => point.country}
-              placeholder="Go to..."
             />
-            <Combobox.Button className="flex items-center pr-2">
+            <Combobox.Button className="flex items-center pr-3">
               <SelectorIcon
                 className="w-5 h-5 text-gray-400"
                 aria-hidden="true"
@@ -59,6 +54,12 @@ export default function SideBar(props) {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
+            </button>
+            <button
+              className="p-2 m-2 bg-blue-400 self-center rounded-lg"
+              onClick={() => setCoordinates(null)}
+            >
+              Zoom out
             </button>
           </div>
           <Transition
@@ -102,6 +103,12 @@ export default function SideBar(props) {
           </Transition>
         </Combobox>
       </div>
+
+      <p className=" p-2 ">
+        News from all over the world was last updated at
+        <br />
+        {lastFetched}
+      </p>
     </div>
   );
 }
