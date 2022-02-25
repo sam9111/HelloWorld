@@ -6,6 +6,8 @@ import "tippy.js/dist/tippy.css";
 import { Dialog, Transition } from "@headlessui/react";
 import Card from "./Card";
 
+axios.defaults.baseURL = "https://hello-world-fastapi.azurewebsites.net/api/";
+
 export default function World() {
   const [markers, setmarkers] = useState([]);
   const [data, setdata] = useState([]);
@@ -25,12 +27,12 @@ export default function World() {
 
   useEffect(() => {
     async function fetchmarkers() {
-      const response = await axios.get("/api/points");
+      const response = await axios.get("points");
 
       setmarkers(response.data);
     }
     async function fetchData() {
-      const response = await axios.get("/api/data");
+      const response = await axios.get("data");
 
       setdata(response.data);
     }

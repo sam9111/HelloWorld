@@ -18,7 +18,7 @@ export default function Card(props) {
                 {article.title}
               </h1>
 
-              <a className="text-gray-500 text-base" href={article.link}>
+              <a className="text-gray-500 text-base h-6" href={article.link}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
