@@ -37,7 +37,7 @@ export default function SideBar(props) {
               />
             </Combobox.Button>
             <button
-              className="p-2 bg-blue-400 self-center rounded-lg"
+              className="p-2 bg-blue-400 self-center rounded-lg shadow shadow-white"
               onClick={() => {
                 setCoordinates(selectedPoint.coordinates);
               }}
@@ -58,7 +58,7 @@ export default function SideBar(props) {
               </svg>
             </button>
             <button
-              className="p-2 m-2 bg-blue-400 self-center rounded-lg"
+              className="p-2 m-2 bg-blue-400 self-center rounded-lg shadow shadow-white"
               onClick={() => setCoordinates(null)}
             >
               Defocus

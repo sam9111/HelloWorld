@@ -4,6 +4,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import ReactGlobe from "react-globe";
 import "tippy.js/dist/tippy.css";
 import { Dialog, Transition } from "@headlessui/react";
+import Card from "./Card";
 
 export default function World() {
   const [markers, setmarkers] = useState([]);
@@ -50,7 +51,7 @@ export default function World() {
   return (
     <div
       className={`flex flex-col md:flex-row ${
-        isOpen ? "blur-sm" : "blur-none"
+        isOpen ? "blur-md" : "blur-none"
       } `}
     >
       <SideBar
@@ -71,67 +72,58 @@ export default function World() {
             openModal();
           }}
         />
+        {countryObj && (
+          <Transition appear show={isOpen} as={Fragment}>
+            <Dialog
+              as="div"
+              className="fixed inset-0 z-10 overflow-y-auto"
+              onClose={closeModal}
+            >
+              <div className="min-h-screen px-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Dialog.Overlay className="fixed inset-0" />
+                </Transition.Child>
 
-        <Transition appear show={isOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="fixed inset-0 z-10 overflow-y-auto"
-            onClose={closeModal}
-          >
-            <div className="min-h-screen px-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <Dialog.Overlay className="fixed inset-0" />
-              </Transition.Child>
+                <span
+                  className="inline-block h-screen align-middle"
+                  aria-hidden="true"
+                ></span>
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <div className="inline-block space-y-5 w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white  rounded-2xl">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-2xl font-medium leading-6 text-gray-900"
+                    >
+                      {country}
+                    </Dialog.Title>
 
-              <span
-                className="inline-block h-screen align-middle"
-                aria-hidden="true"
-              ></span>
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <div className="inline-block space-y-5 w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white  rounded-2xl">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-2xl font-medium leading-6 text-gray-900"
-                  >
-                    {country}
-                  </Dialog.Title>
-                  <div className="">
                     <p className="text-lg text-gray-500">
                       Mostly reporting {countryObj.sentiment} headlines in the
                       past 24 hours.
                     </p>
+                    <Card articles={countryObj.articles} />
                   </div>
-
-                  {/* <div className="">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                      onClick={closeModal}
-                    >
-                      That's cool!
-                    </button>
-                  </div> */}
-                </div>
-              </Transition.Child>
-            </div>
-          </Dialog>
-        </Transition>
+                </Transition.Child>
+              </div>
+            </Dialog>
+          </Transition>
+        )}
       </div>
     </div>
   );
