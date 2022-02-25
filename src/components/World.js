@@ -46,6 +46,7 @@ export default function World() {
     markerExitAnimationDuration: 1000,
     markerExitEasingFunction: ["Cubic", "Out"],
     enableDefocus: true,
+
     markerTooltipRenderer: (marker) => `${marker.country}`,
   };
 
@@ -123,6 +124,13 @@ export default function World() {
                       past 24 hours.
                     </p>
                     <Card articles={countryObj.articles} />
+                    <button
+                      type="button"
+                      className="p-2 bg-blue-400 text-white self-center rounded-lg "
+                      onClick={closeModal}
+                    >
+                      Go Back
+                    </button>
                   </div>
                 </Transition.Child>
               </div>

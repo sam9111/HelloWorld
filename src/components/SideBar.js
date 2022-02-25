@@ -151,11 +151,17 @@ export default function SideBar(props) {
         </Combobox>
       </div>
 
-      <p className=" p-2 ">
-        News from all over the world was last updated at
-        <br />
-        {lastFetched}
-      </p>
+      <div className="p-2 space-y-2">
+        <p>
+          Click on any marker to see the list of articles for that country that
+          have been analysed.
+        </p>
+        <p>
+          Data was last updated at
+          <br />
+          {lastFetched}
+        </p>
+      </div>
     </div>
   );
 }
