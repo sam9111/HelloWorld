@@ -5,7 +5,7 @@ import { SelectorIcon } from "@heroicons/react/solid";
 export default function SideBar(props) {
   const { points, lastFetched, setCoordinates, setAnimationSequence } = props;
 
-  const [selectedPoint, setselectedPoint] = useState(points[0]);
+  const [selectedPoint, setSelectedPoint] = useState(points[0]);
   const [query, setQuery] = useState("");
 
   const filteredPoints =
@@ -61,7 +61,7 @@ export default function SideBar(props) {
       </h1>
 
       <div className="flex-1 ">
-        <Combobox value={selectedPoint} onChange={setselectedPoint}>
+        <Combobox value={selectedPoint} onChange={setSelectedPoint}>
           <Combobox.Label className="p-2">Travel directly to...</Combobox.Label>
           <div className="flex flex-row flex-wrap">
             <Combobox.Input
@@ -151,15 +151,25 @@ export default function SideBar(props) {
         </Combobox>
       </div>
 
-      <div className="p-2 space-y-2">
+      <div className="p-2 space-y-4">
         <p>
           Click on any marker to see the list of articles for that country that
-          have been analysed.
+          have been sentiment analysed.
         </p>
-        <p>Data was last updated at {lastFetched}</p>
-        <a href="https://github.com/sam9111/HelloWorld" className="underline">
-          Made with 🤍
-        </a>
+        <p>
+          Data was last updated at{" "}
+          <span className="text-blue-200">{lastFetched}</span>
+        </p>
+        <div>
+          <a href="https://github.com/sam9111/HelloWorld">
+            To know more about this project, see
+            <img
+              className="p-2"
+              alt="Github"
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzAiIGhlaWdodD0iMzAiCnZpZXdCb3g9IjAgMCAzMCAzMCIKc3R5bGU9IiBmaWxsOiNmZmZmZmY7Ij4gICAgPHBhdGggZD0iTTE1LDNDOC4zNzMsMywzLDguMzczLDMsMTVjMCw1LjYyMywzLjg3MiwxMC4zMjgsOS4wOTIsMTEuNjNDMTIuMDM2LDI2LjQ2OCwxMiwyNi4yOCwxMiwyNi4wNDd2LTIuMDUxIGMtMC40ODcsMC0xLjMwMywwLTEuNTA4LDBjLTAuODIxLDAtMS41NTEtMC4zNTMtMS45MDUtMS4wMDljLTAuMzkzLTAuNzI5LTAuNDYxLTEuODQ0LTEuNDM1LTIuNTI2IGMtMC4yODktMC4yMjctMC4wNjktMC40ODYsMC4yNjQtMC40NTFjMC42MTUsMC4xNzQsMS4xMjUsMC41OTYsMS42MDUsMS4yMjJjMC40NzgsMC42MjcsMC43MDMsMC43NjksMS41OTYsMC43NjkgYzAuNDMzLDAsMS4wODEtMC4wMjUsMS42OTEtMC4xMjFjMC4zMjgtMC44MzMsMC44OTUtMS42LDEuNTg4LTEuOTYyYy0zLjk5Ni0wLjQxMS01LjkwMy0yLjM5OS01LjkwMy01LjA5OCBjMC0xLjE2MiwwLjQ5NS0yLjI4NiwxLjMzNi0zLjIzM0M5LjA1MywxMC42NDcsOC43MDYsOC43Myw5LjQzNSw4YzEuNzk4LDAsMi44ODUsMS4xNjYsMy4xNDYsMS40ODFDMTMuNDc3LDkuMTc0LDE0LjQ2MSw5LDE1LjQ5NSw5IGMxLjAzNiwwLDIuMDI0LDAuMTc0LDIuOTIyLDAuNDgzQzE4LjY3NSw5LjE3LDE5Ljc2Myw4LDIxLjU2NSw4YzAuNzMyLDAuNzMxLDAuMzgxLDIuNjU2LDAuMTAyLDMuNTk0IGMwLjgzNiwwLjk0NSwxLjMyOCwyLjA2NiwxLjMyOCwzLjIyNmMwLDIuNjk3LTEuOTA0LDQuNjg0LTUuODk0LDUuMDk3QzE4LjE5OSwyMC40OSwxOSwyMi4xLDE5LDIzLjMxM3YyLjczNCBjMCwwLjEwNC0wLjAyMywwLjE3OS0wLjAzNSwwLjI2OEMyMy42NDEsMjQuNjc2LDI3LDIwLjIzNiwyNywxNUMyNyw4LjM3MywyMS42MjcsMywxNSwzeiI+PC9wYXRoPjwvc3ZnPg=="
+            />
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -9,8 +9,8 @@ import Card from "./Card";
 axios.defaults.baseURL = "https://hello-world-fastapi.azurewebsites.net/api/";
 
 export default function World() {
-  const [markers, setmarkers] = useState([]);
-  const [data, setdata] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [data, setData] = useState([]);
   const [focus, setFocus] = useState(null);
   const [country, setCountry] = useState(null);
   const [countryObj, setCountryObj] = useState(null);
@@ -26,18 +26,18 @@ export default function World() {
   }
 
   useEffect(() => {
-    async function fetchmarkers() {
+    async function fetchMarkers() {
       const response = await axios.get("points");
 
-      setmarkers(response.data);
+      setMarkers(response.data);
     }
     async function fetchData() {
       const response = await axios.get("data");
 
-      setdata(response.data);
+      setData(response.data);
     }
 
-    fetchmarkers();
+    fetchMarkers();
     fetchData();
   }, []);
 
